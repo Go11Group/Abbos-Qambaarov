@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	listener, err := net.Listen("tcp", ":8000")
+	listener, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		fmt.Println("Error setting up listener:", err)
 		return
@@ -22,7 +22,7 @@ func main() {
 			fmt.Println("Error accepting connection:", err)
 			continue
 		}
-		go handleConnection(conn) 
+		go handleConnection(conn)
 	}
 }
 
@@ -39,8 +39,8 @@ func handleConnection(conn net.Conn) {
 		}
 
 		fmt.Print("Received message: ", string(message))
-		message = "qabul qilindi"
-		_, err = conn.Write([]byte(strings.ToUpper(message) + "\n")) 
+		message = "So'rov qabul qilindi"
+		_, err = conn.Write([]byte(strings.ToUpper(message) + "\n"))
 		if err != nil {
 			fmt.Println("Error writing message:", err)
 			return

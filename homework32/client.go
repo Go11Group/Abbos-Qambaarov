@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	conn, err := net.Dial("tcp", "localhost:8000")
+	conn, err := net.Dial("tcp", "localhost:8080")
 	if err != nil {
 		fmt.Println("Error connecting to server:", err)
 		return
@@ -16,14 +16,17 @@ func main() {
 	defer conn.Close()
 
 	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Ismingizni kiriting:  ")
+	var name string
+	fmt.Scan(&name)
 	for {
-		fmt.Print("Enter message: ")
+		fmt.Print(name, ":  ")
 		input, err := reader.ReadString('\n')
 		if err != nil {
 			fmt.Println("Error reading input:", err)
 			return
 		}
-
+		input = name+":  "+input
 		_, err = conn.Write([]byte(input))
 		if err != nil {
 			fmt.Println("Error sending message:", err)
