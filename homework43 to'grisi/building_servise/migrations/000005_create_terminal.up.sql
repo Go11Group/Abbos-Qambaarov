@@ -1,0 +1,1 @@
+create table IF NOT EXISTS terminals(id uuid primary key, station_id uuid references stations(id));

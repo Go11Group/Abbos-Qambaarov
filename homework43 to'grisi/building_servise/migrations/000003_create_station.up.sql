@@ -1,0 +1,1 @@
+create table IF NOT EXISTS stations(id uuid primary key, name varchar);
