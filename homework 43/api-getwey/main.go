@@ -8,7 +8,8 @@ import (
 
 func main() {
 	ser := server.NewServer(":8083")
-	err := ser.Servers()
+
+	err := ser.Start()
 	if err != nil {
 		log.Println(err)
 	}

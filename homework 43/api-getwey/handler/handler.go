@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,11 +18,16 @@ func NewHandler() *Handler {
 }
 
 type User struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Age int `json:"age"`
-	Phone string `json:"phone"`	
-	
+	UserId    string    `json:"user_id"` // id is required
+	FirstName string    `json:"first_name"`
+	LastName  string    `json:"last_name"`
+	Email     string    `json:"email"` // email is required
+	Age       int       `json:"age"`
+	Phone     string    `json:"phone"`
+	Role      string    `json:"role"` // default value for this is "user"
+	Password  string    `json:"password"`
+	UpdatedAt time.Time `json:"updated_at"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 type Response struct {
